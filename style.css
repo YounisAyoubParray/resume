@@ -1,8 +1,6 @@
 /* === GENERAL === */
 :root {
-  /* Background gradient */
-  --bg-gradient-start: #2c3e50;  /* dark blue-gray */
-  --bg-gradient-end: #4ca1af;    /* teal */
+
 
   /* Text and headings */
   --text-color: #ecf0f1;         /* light gray */
@@ -17,33 +15,73 @@
   --active-link-color: #ecf0f1;
 
   /* Section */
-  --section-bg: #34495e;         /* dark slate */
+  --section-bg: rgba(44, 62, 80, 0.8);        /* dark slate */
   --section-shadow-color: rgba(0, 0, 0, 0.2);
 
   /* Heading accent border */
   --heading-border-color: #1abc9c;
 }
 
-
-
-
-
-
-
+/* === BODY === */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 1rem;
-  padding-top: 80px; /* Space for fixed navbar */
-  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  padding-top: 80px;
+  min-height: 100vh;
   color: var(--text-color);
+  position: relative;
+  background: none; /* Let .background-container handle the image */
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: url('stars.jpg') no-repeat center center;
+  background-size: cover;
+  animation: moveBackground 60s infinite linear;
+  pointer-events: none;
+}
+
+/* Animation to move the background */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Keep the rest of your existing sections as is */
+
+
+
+
+
+
+
+
 
 html {
   scroll-behavior: smooth;
 }
-
-
 
 /* === NAVBAR === */
 .navbar {
@@ -88,7 +126,7 @@ html {
 }
 
 .nav-links a:hover {
-  background-color:  var(--nav-link-hover-bg);
+  background-color: var(--nav-link-hover-bg);
 }
 
 .nav-links a.active-link {
@@ -98,12 +136,7 @@ html {
   color: var(--active-link-color) !important;
 }
 
-.navbar-spacer {
-  height: 80px; /* Adjust this value to match your navbar's height */
-}
-
-
-/* === HAMBURGER === */
+/* === HAMBURGER MENU === */
 .menu-toggle {
   display: none;
   color: white;
@@ -112,6 +145,10 @@ html {
   border: none;
   cursor: pointer;
   padding: 10px;
+}
+
+.navbar-spacer {
+  height: 80px; /* Adjust this value to match your navbar's height */
 }
 
 /* === SECTION HEADINGS === */
@@ -144,20 +181,30 @@ section {
   background: var(--section-bg);
   box-shadow: 0 8px 20px var(--section-shadow-color);
   border-radius: 8px;
+  z-index: 1;
+  position: relative;
 }
 
 /* === CONTACT INFO === */
 .contact {
   font-size: 1rem;
-  color: #444;
+  color: white;
   line-height: 1.6;
   margin-bottom: 2rem;
-}
-section {
-  scroll-margin-top: 100px; /* Match navbar height */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  background-color: rgba(44, 62, 80, 0.8); /* optional background for contrast */
+  padding: 1rem;
   border-radius: 8px;
 }
+
+.contact a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
 /* === MOBILE MENU === */
 @media (max-width: 768px) {
   .menu-toggle {
@@ -199,64 +246,51 @@ section {
       transform: translateY(0);
     }
   }
-
 }
 
-/* Additional debug CSS for mobile navbar */
-.nav-container {
-  position: relative;
+/* === FOOTER === */
+.site-footer {
+  padding: 40px 20px;
+  background: rgba(44, 62, 80, 0.8); /* Change the background color */
+  color: white; /* Text color */
+  text-align: center; /* Center align the content */
 }
 
-.menu-toggle {
-  z-index: 1100;
+.site-footer .footer-content p {
+  margin: 10px 0;
 }
 
-.nav-links {
-  z-index: 1000;
+.site-footer .footer-content a {
+  color: #ffd700; /* Custom link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: #2c3e50;
-    padding: 1rem 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  .nav-links.show {
-    display: flex !important;
-  }
-  .menu-toggle {
-    display: block;
-    cursor: pointer;
-    font-size: 2rem;
-    color: white;
-    background: none;
-    border: none;
-  }
+.site-footer .footer-content a:hover {
+  text-decoration: underline; /* Adds underline on hover */
+  color: #ffd700; /* Change color on hover */
 }
 
+/* === ABOUT SECTION === */
+#about {
+  padding: 40px 20px;
+  background: rgba(44, 62, 80, 0.8);
+  color: var(--text-color);
+  text-align: center;
+}
 
+#about h2 {
+  font-size: 2em;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  border-left: none;
+}
 
-.contact {
-  color: white;
-  font-size: 1rem;
+#about p {
+  font-size: 1.2em;
   line-height: 1.6;
-  margin-bottom: 2rem;
-  background-color: rgba(44, 62, 80, 0.8); /* optional background for contrast */
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-.contact a {
-  color: #ffd700;
-  text-decoration: none;
-}
-
-.contact a:hover {
-  text-decoration: underline;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  color: var(--text-color);
 }
