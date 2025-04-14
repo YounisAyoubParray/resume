@@ -57,37 +57,73 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
-  // Intersection Observer configuration for section highlighting
-  const observer = new IntersectionObserver(
-    debounce((entries) => {
-      if (isManualScroll) return;
+  window.addEventListener("scroll", () => {
+    if (isManualScroll) return;
 
-      let mostVisibleEntry = null;
-      let maxVisibility = 0;
-      entries.forEach(entry => {
-        const visibility = entry.intersectionRatio;
-        if (visibility > maxVisibility) {
-          mostVisibleEntry = entry;
-          maxVisibility = visibility;
-        }
-      });
-      if (mostVisibleEntry) {
-        const targetId = mostVisibleEntry.target.id;
-        navItems.forEach(link => {
-          const isActive = link.hash === `#${targetId}`;
-          link.classList.toggle("active-link", isActive);
-        });
-        console.log("Section in view:", mostVisibleEntry.target.id);
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollPosition = scrollY + viewportHeight;
+
+    let currentSectionId = null;
+    let minOffset = Number.POSITIVE_INFINITY;
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const offset = Math.abs(rect.top);
+
+      if (rect.top <= 100 && offset < minOffset) {
+        minOffset = offset;
+        currentSectionId = section.id;
       }
-    }, 100),
-    {
-      threshold: [0, 0.5, 1],
-      rootMargin: "-100px 0px -25% 0px"
-    }
-  );
+    });
 
-  // Observe all sections
-  sections.forEach(section => observer.observe(section));
+    const isAtBottom = scrollPosition >= documentHeight - 2;
+
+    if (!currentSectionId && isAtBottom) {
+      const lastSection = sections[sections.length - 1];
+      if (lastSection) {
+        currentSectionId = lastSection.id;
+        console.log("At bottom → forcing last section as active:", currentSectionId);
+      }
+    }
+
+    if (currentSectionId) {
+      console.log("Highlighting section:", currentSectionId); // ✅ Moved inside
+      navItems.forEach(link => {
+        const isActive = link.hash === `#${currentSectionId}`;
+        link.classList.toggle("active-link", isActive);
+      });
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Smooth Scroll & Click Handling for nav links
   navItems.forEach(link => {
