@@ -156,3 +156,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+
+
+
+
+
+
+window.addEventListener('load', function () {
+  // Create and append the anchor (optional)
+  const link = document.createElement('a');
+  link.href = 'https://www.free-counters.org/';
+  link.innerHTML = 'Visitor Counter'; // or an image, if needed
+  document.body.appendChild(link);
+
+  // Load auth script
+  const authScript = document.createElement('script');
+  authScript.src = 'https://www.freevisitorcounters.com/auth.php?id=fe03cffee77a3dad46035eb18be4d9bc7efd2fc3';
+  authScript.async = true;
+  document.body.appendChild(authScript);
+
+  // Load counter script
+  const counterScript = document.createElement('script');
+  counterScript.src = 'https://www.freevisitorcounters.com/en/home/counter/1328483/t/2';
+  counterScript.async = true;
+  document.body.appendChild(counterScript);
+});
