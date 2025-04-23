@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 window.addEventListener('load', function () {
-  
+
 
   // Load auth script
   const authScript = document.createElement('script');
