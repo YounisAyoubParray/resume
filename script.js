@@ -166,11 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 window.addEventListener('load', function () {
-  // Create and append the anchor (optional)
-  const link = document.createElement('a');
-  link.href = 'https://www.free-counters.org/';
-  link.innerHTML = 'Visitor Counter'; // or an image, if needed
-  document.body.appendChild(link);
+  
 
   // Load auth script
   const authScript = document.createElement('script');
