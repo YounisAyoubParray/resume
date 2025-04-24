@@ -157,34 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-const footer = document.querySelector(".footer-content");
 
-  if (footer) {
-    // Link for attribution
-    const creditLink = document.createElement("a");
-    creditLink.href = "https://www.free-counters.org/";
-    creditLink.textContent = "... by Free-Counters.org";
-    creditLink.target = "_blank";
-    creditLink.style.display = "block";
-    creditLink.style.marginTop = "10px";
-
-    // Auth script
-    const authScript = document.createElement("script");
-    authScript.src = "https://www.freevisitorcounters.com/auth.php?id=fe03cffee77a3dad46035eb18be4d9bc7efd2fc3";
-    authScript.async = true;
-
-    // Counter script
-    const counterScript = document.createElement("script");
-    counterScript.src = "https://www.freevisitorcounters.com/en/home/counter/1331320/t/2";
-    counterScript.async = true;
-
-    // Append to footer
-    footer.appendChild(creditLink);
-    footer.appendChild(authScript);
-    footer.appendChild(counterScript);
-  } else {
-    console.warn("Footer container not found, visitor counter not added.");
-  }
   
 
 
