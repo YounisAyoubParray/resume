@@ -27,61 +27,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Section Highlighting System (top section only)
+  // New: Robust scroll-highlight based on offsetTop
   const sections = document.querySelectorAll("section[id]");
-  const navItems = document.querySelectorAll(".nav-links a");
-  let isManualScroll = false;
+  const links = document.querySelectorAll(".nav-links a");
+  const navbarHeight = 80; // match your CSS navbar height
 
-  // Ignore initial scroll jump
-  const pageLoadTime = Date.now();
+  const highlightOnScroll = () => {
+    const scrollY = window.pageYOffset + navbarHeight;
+    let currentId = sections[0].id;
 
-  const highlightTopSection = () => {
-    if (isManualScroll) return;
-    let closestSection = null;
-    let minDistance = Infinity;
-
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const distance = Math.abs(rect.top);
-      if (rect.top <= 100 && distance < minDistance) {
-        minDistance = distance;
-        closestSection = section;
+    sections.forEach((sec) => {
+      if (scrollY >= sec.offsetTop) {
+        currentId = sec.id;
       }
     });
 
-    if (closestSection) {
-      const currentId = closestSection.id;
-      navItems.forEach(link => {
-        link.classList.toggle("active-link", link.hash === `#${currentId}`);
-      });
-    }
+    links.forEach((link) => {
+      link.classList.toggle(
+        "active-link",
+        link.getAttribute("href") === `#${currentId}`
+      );
+    });
   };
 
-  const debounce = (func, delay) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), delay);
-    };
-  };
-
-  const debouncedHighlight = debounce(highlightTopSection, 100);
-  window.addEventListener("scroll", () => {
-    // Skip highlight on the initial browser jump
-    if (Date.now() - pageLoadTime < 200) return;
-    debouncedHighlight();
-  });
+  window.addEventListener("scroll", highlightOnScroll);
+  highlightOnScroll(); // highlight on load if page is mid-scroll
 
   // Smooth Scroll & Click Handling for nav links
-  navItems.forEach(link => {
+  links.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
-      isManualScroll = true;
       const targetId = this.hash.slice(1);
       const targetSection = document.getElementById(targetId);
 
       // Update active class immediately
-      navItems.forEach(l => l.classList.remove("active-link"));
+      links.forEach((l) => l.classList.remove("active-link"));
       this.classList.add("active-link");
 
       // Smooth scroll
@@ -90,10 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Close mobile menu
       navLinks.classList.remove("show");
       navContainer.classList.remove("menu-open");
-
-      setTimeout(() => {
-        isManualScroll = false;
-      }, 1500);
     });
   });
 });
