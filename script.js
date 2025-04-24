@@ -152,10 +152,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  
 
 
 
+
+  window.addEventListener("load", () => {
+    const placeholder = document.getElementById("visitor-counter-placeholder");
+
+    if (placeholder) {
+      // 1. Create credit link (required)
+      const creditLink = document.createElement("a");
+      creditLink.href = "https://www.free-counters.org/";
+      creditLink.textContent = "Visitor Counter";
+      creditLink.target = "_blank";
+
+      // 2. Create auth script
+      const authScript = document.createElement("script");
+      authScript.src = "https://www.freevisitorcounters.com/auth.php?id=fe03cffee77a3dad46035eb18be4d9bc7efd2fc3";
+
+      // 3. Create counter script
+      const counterScript = document.createElement("script");
+      counterScript.src = "https://www.freevisitorcounters.com/en/home/counter/1331320/t/2";
+
+      // 4. Append all to the placeholder div
+      placeholder.appendChild(creditLink);
+      placeholder.appendChild(authScript);
+      placeholder.appendChild(counterScript);
+    } else {
+      console.error("Visitor counter placeholder not found!");
+    }
+  });
 
 
 
