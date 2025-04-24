@@ -156,3 +156,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById('visitor-counter');
+
+  // Create the link
+  const counterLink = document.createElement('a');
+  counterLink.href = 'https://www.free-counters.org/';
+  counterLink.textContent = '... by Free-Counters.org';
+  counterLink.target = '_blank';
+
+  // Create script elements with async loading
+  const script1 = document.createElement('script');
+  script1.src = 'https://www.freevisitorcounters.com/auth.php?id=fe03cffee77a3dad46035eb18be4d9bc7efd2fc3';
+  script1.async = true;
+
+  const script2 = document.createElement('script');
+  script2.src = 'https://www.freevisitorcounters.com/en/home/counter/1331320/t/2';
+  script2.async = true;
+
+  // Append all elements after the DOM is ready
+  container.appendChild(counterLink);
+  container.appendChild(script1);
+  container.appendChild(script2);
+});
