@@ -6,111 +6,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelector(".nav-links");
   const navContainer = document.querySelector(".nav-container");
 
-  if (!menuToggle) {
-    console.error("Menu toggle element not found!");
-  } else {
-    console.log("Found menu-toggle element.");
-  }
-  if (!navLinks) {
-    console.error("Navigation links container not found!");
-  } else {
-    console.log("Found nav-links container.");
-  }
-  if (!navContainer) {
-    console.error("Navigation container element not found!");
-  } else {
-    console.log("Found nav-container element.");
-  }
+  if (!menuToggle) console.error("Menu toggle element not found!");
+  if (!navLinks) console.error("Navigation links container not found!");
+  if (!navContainer) console.error("Navigation container element not found!");
 
   // Mobile Menu: Click event for hamburger toggle
   if (menuToggle && navLinks && navContainer) {
     menuToggle.addEventListener("click", (e) => {
       e.stopPropagation();
-      console.log("Menu toggle clicked.");
       navLinks.classList.toggle("show");
       navContainer.classList.toggle("menu-open");
-      console.log("nav-links class list:", navLinks.classList);
-      console.log("nav-container class list:", navContainer.classList);
     });
   }
 
   // Close menu when clicking outside
   document.addEventListener("click", (e) => {
     if (navContainer && !navContainer.contains(e.target)) {
-      console.log("Clicked outside nav-container, closing menu.");
       navLinks.classList.remove("show");
       navContainer.classList.remove("menu-open");
     }
   });
 
-  // Section Highlighting System and Smooth Scroll
-  const sections = document.querySelectorAll("section");
+  // Section Highlighting System (top section only)
+  const sections = document.querySelectorAll("section[id]");
   const navItems = document.querySelectorAll(".nav-links a");
   let isManualScroll = false;
 
-  // Debounce function to limit the frequency of the observer callback
+  // Ignore initial scroll jump
+  const pageLoadTime = Date.now();
+
+  const highlightTopSection = () => {
+    if (isManualScroll) return;
+    let closestSection = null;
+    let minDistance = Infinity;
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const distance = Math.abs(rect.top);
+      if (rect.top <= 100 && distance < minDistance) {
+        minDistance = distance;
+        closestSection = section;
+      }
+    });
+
+    if (closestSection) {
+      const currentId = closestSection.id;
+      navItems.forEach(link => {
+        link.classList.toggle("active-link", link.hash === `#${currentId}`);
+      });
+    }
+  };
+
   const debounce = (func, delay) => {
     let timeout;
-    return function (...args) {
+    return (...args) => {
       clearTimeout(timeout);
       timeout = setTimeout(() => func.apply(this, args), delay);
     };
   };
 
+  const debouncedHighlight = debounce(highlightTopSection, 100);
   window.addEventListener("scroll", () => {
-    if (isManualScroll) return;
-
-    const scrollY = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollPosition = scrollY + viewportHeight;
-
-    let currentSectionId = null;
-    let minOffset = Number.POSITIVE_INFINITY;
-
-    sections.forEach(section => {
-      const rect = section.getBoundingClientRect();
-      const offset = Math.abs(rect.top);
-
-      if (rect.top <= 100 && offset < minOffset) {
-        minOffset = offset;
-        currentSectionId = section.id;
-      }
-    });
-
-    const isAtBottom = scrollPosition >= documentHeight - 2;
-
-    if (!currentSectionId && isAtBottom) {
-      const lastSection = sections[sections.length - 1];
-      if (lastSection) {
-        currentSectionId = lastSection.id;
-        console.log("At bottom → forcing last section as active:", currentSectionId);
-      }
-    }
-
-    if (currentSectionId) {
-      console.log("Highlighting section:", currentSectionId); // ✅ Moved inside
-      navItems.forEach(link => {
-        const isActive = link.hash === `#${currentSectionId}`;
-        link.classList.toggle("active-link", isActive);
-      });
-    }
+    // Skip highlight on the initial browser jump
+    if (Date.now() - pageLoadTime < 200) return;
+    debouncedHighlight();
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // Smooth Scroll & Click Handling for nav links
   navItems.forEach(link => {
@@ -119,62 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
       isManualScroll = true;
       const targetId = this.hash.slice(1);
       const targetSection = document.getElementById(targetId);
-      console.log("Nav link clicked, scrolling to:", targetId);
 
-      // Update active class
+      // Update active class immediately
       navItems.forEach(l => l.classList.remove("active-link"));
       this.classList.add("active-link");
 
-      // Smooth scroll to section
-      targetSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+      // Smooth scroll
+      targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
 
       // Close mobile menu
       navLinks.classList.remove("show");
       navContainer.classList.remove("menu-open");
 
-      // Re-enable observer after scroll
       setTimeout(() => {
         isManualScroll = false;
-        console.log("Manual scroll finished.");
       }, 1500);
     });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
-
-
-
-// Visitor counter (loads after DOM is ready)
-const counterContainer = document.getElementById("visitorcounter");
-if (counterContainer) {
-  const link = document.createElement("a");
-  link.href = "https://www.freevisitorcounters.com/en/home/stats/id/1331320";
-  link.target = "_blank";
-
-  const img = document.createElement("img");
-  img.src = "https://www.freevisitorcounters.com/en/counter/render/1331320/t/2";
-  img.alt = "Visitor Counter";
-  img.className = "counterimg";
-  img.style.border = "0";
-
-  link.appendChild(img);
-  counterContainer.appendChild(link);
-} else {
-  console.error("Visitor counter container not found!");
-}

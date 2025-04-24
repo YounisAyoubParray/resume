@@ -1,26 +1,34 @@
 /* === GENERAL === */
 :root {
 
-
-  /* Text and headings */
-  --text-color: #ecf0f1;         /* light gray */
+  /* Text and Headings */
+  --text-color: #e6f2ff;               /* Soft light blue text */
+  --heading-color: #61dafb;            /* Vibrant blue for main headings */
 
   /* Navbar */
-  --nav-bg-color: rgba(44, 62, 80, 0.95);
-  --nav-link-color: #ecf0f1;
-  --nav-link-hover-bg: rgba(236, 240, 241, 0.1);
+  --nav-bg-color: rgba(14, 32, 51, 0.95); /* Deep navy with transparency */
+  --nav-link-color: #ffffff;              /* Bright white links */
+  --nav-link-hover-bg: rgba(97, 218, 251, 0.15); /* Light glow effect */
 
   /* Active Link */
-  --active-link-bg: #16a085;      /* greenish-teal */
-  --active-link-color: #ecf0f1;
+  --active-link-bg: #1e90ff;           /* Dodger Blue */
+  --active-link-color: #ffffff;
 
   /* Section */
-  --section-bg: rgba(44, 62, 80, 0.8);        /* dark slate */
-  --section-shadow-color: rgba(0, 0, 0, 0.2);
+  --section-bg: #102030;               /* Dark blue-gray background */
+  --section-shadow-color: rgba(0, 0, 0, 0.3); /* Deeper shadows */
 
-  /* Heading accent border */
-  --heading-border-color: #1abc9c;
+  /* Heading Accent Border */
+  --heading-border-color: #1e90ff;     /* Accent Blue */
+
+  /* Additional Accents */
+  --primary-accent: #1e90ff;           /* Used in buttons and callouts */
+  --secondary-accent: #61dafb;         /* Lighter complementary blue */
+  --muted-gray: #2b3a50;               /* Soft background fill */
 }
+
+
+
 
 /* === BODY === */
 body {
@@ -29,49 +37,30 @@ body {
   padding: 1rem;
   padding-top: 80px;
   min-height: 100vh;
+  background: linear-gradient(to right, #e3f2fd, #bbdefb);
   color: var(--text-color);
-  position: relative;
-  background: none; /* Let .background-container handle the image */
+  position: relative; /* Let .background-container handle the image */
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
 
-.background-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: url('stars.jpg') no-repeat center center;
-  background-size: cover;
-  animation: moveBackground 60s infinite linear;
-  pointer-events: none;
-}
 
-/* Animation to move the background */
-@keyframes moveBackground {
-  0% {
-    background-position: 0% 0%;
+
+
+
+
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
   }
-  25% {
-    background-position: 50% 50%;
-  }
-  50% {
-    background-position: 100% 0%;
-  }
-  75% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
-
-/* Keep the rest of your existing sections as is */
-
-
 
 
 
@@ -151,20 +140,36 @@ html {
   height: 80px; /* Adjust this value to match your navbar's height */
 }
 
-/* === SECTION HEADINGS === */
-h1, h2 {
-  color: var(--text-color);
-}
+
 
 h1 {
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5rem;
-  margin-top: 0;
+  /* Formal serif stack – no external API needed */
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Keep your existing styles */
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #007acc;
+  text-align: center;
+  margin: 1rem 0 2rem;
+  background: linear-gradient(to right, #004080, #0066cc, #0096d6); /* Deeper blues */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1.5px;
+  text-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
+  font-weight: 900;
+  /* One-time drop-in animation */
+  opacity: 0;
+  animation: dropIn 0.8s ease-out forwards;
 }
+
+
 
 h2 {
   border-left: 6px solid var(--heading-border-color);
   padding-left: 0.6rem;
+  color: var(--text-color);
 }
 
 .highlight-heading {
@@ -188,21 +193,26 @@ section {
 /* === CONTACT INFO === */
 .contact {
   font-size: 1rem;
-  color: white;
+  color: var(--text-color);
   line-height: 1.6;
   margin-bottom: 2rem;
-  background-color: rgba(44, 62, 80, 0.8); /* optional background for contrast */
-  padding: 1rem;
-  border-radius: 8px;
+  background-color: var(--section-bg); /* matches main sections */
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); /* consistent shadow */
+  border-left: 4px solid var(--primary-accent);
+
 }
 
 .contact a {
-  color: #ffd700;
+  color: var(--secondary-accent); /* soft complementary blue */
   text-decoration: none;
+  font-weight: 600;
 }
 
 .contact a:hover {
-  text-decoration: underline;
+  color: #ffffff;
+  text-shadow: 0 0 8px var(--primary-accent);
 }
 
 /* === MOBILE MENU === */
@@ -236,47 +246,52 @@ section {
     transition: all 0.2s ease-in-out;
   }
 
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+
 }
 
-/* === FOOTER === */
 .site-footer {
-  padding: 40px 20px;
-  background: rgba(44, 62, 80, 0.8); /* Change the background color */
-  color: white; /* Text color */
-  text-align: center; /* Center align the content */
+  /* Match contact background & text */
+  background-color: var(--section-bg);
+  color: var(--text-color);
+
+  /* Typography & spacing */
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+
+  /* Layout */
+  text-align: right;
+
+  /* Card feel */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  /* Accent line on the right */
+  border-right: 4px solid var(--primary-accent);
 }
 
-.site-footer .footer-content p {
-  margin: 10px 0;
+/* Link styles to match contact */
+.site-footer a {
+  color: var(--secondary-accent);
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.site-footer .footer-content a {
-  color: #ffd700; /* Custom link color */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold;
+.site-footer a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px var(--primary-accent);
 }
 
-.site-footer .footer-content a:hover {
-  text-decoration: underline; /* Adds underline on hover */
-  color: #ffd700; /* Change color on hover */
-}
 
 /* === ABOUT SECTION === */
 #about {
   padding: 40px 20px;
-  background: rgba(44, 62, 80, 0.8);
+  background: #102030;
   color: var(--text-color);
   text-align: center;
+  box-shadow: 0 8px 20px var(--section-shadow-color);
+  border-radius: 8px;
 }
 
 #about h2 {
