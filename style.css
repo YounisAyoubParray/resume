@@ -302,28 +302,20 @@ section {
 }
 
 
-/* === ABOUT SECTION === */
-#about {
-  padding: 40px 20px;
-  background: #102030;
-  color: var(--text-color);
+.easter-egg {
   text-align: center;
-  box-shadow: 0 8px 20px var(--section-shadow-color);
-  border-radius: 8px;
+  color: #6c757d;
+  font-size: 14px;
+  /* Adjust depending on your padding */
+  padding-bottom: 100px;
+  opacity: 0.8;
+  font-style: italic;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  user-select: none;
 }
 
-#about h2 {
-  font-size: 2em;
-  color: var(--text-color);
-  margin-bottom: 20px;
-  border-left: none;
-}
-
-#about p {
-  font-size: 1em;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 10px;
-  color: var(--text-color);
+.easter-egg:hover {
+  opacity: 1;
+  color: #007bff;
 }

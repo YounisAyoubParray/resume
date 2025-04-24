@@ -72,4 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
       navContainer.classList.remove("menu-open");
     });
   });
+
+
+
+  const tips = [
+      "🧠 Tip: Keep scrolling — great things come at the end.",
+      "✨ Small details make a big difference.",
+      "🎯 Precision beats power. Timing beats speed.",
+      "💻 Built with love and a little bit of caffeine.",
+      "🔍 Attention to detail is a developer's superpower.",
+      "🚀 Pushing pixels and pulling Git commits.",
+      "📚 Learning never stops, even after deployment.",
+      "🛠️ Debugging: being the detective in a crime movie where you are also the murderer."
+    ];
+
+
+    const tipElement = document.querySelector('.easter-egg p');
+  if (tipElement) {
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    tipElement.textContent = randomTip;
+  }
+
+
+
 });
