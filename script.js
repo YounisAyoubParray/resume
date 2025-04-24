@@ -156,27 +156,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-
-
-
-
-
-
-
-
-window.addEventListener('load', function () {
-
-
-  // Load auth script
-  const authScript = document.createElement('script');
-  authScript.src = 'https://www.freevisitorcounters.com/auth.php?id=fe03cffee77a3dad46035eb18be4d9bc7efd2fc3';
-  authScript.async = true;
-  document.body.appendChild(authScript);
-
-  // Load counter script
-  const counterScript = document.createElement('script');
-  counterScript.src = 'https://www.freevisitorcounters.com/en/home/counter/1328483/t/2';
-  counterScript.async = true;
-  document.body.appendChild(counterScript);
-});
