@@ -112,19 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Smooth Scroll & Click Handling for nav links
   navItems.forEach(link => {
     link.addEventListener("click", function (e) {
@@ -158,13 +145,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
   
 
 
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
-
-
