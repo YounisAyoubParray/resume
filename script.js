@@ -149,24 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // Visitor counter (loads after DOM is ready)
-  const counterContainer = document.getElementById("visitor-counter");
-  if (counterContainer) {
-    const link = document.createElement("a");
-    link.href = "https://www.freevisitorcounters.com/en/home/stats/id/1331320";
-    link.target = "_blank";
-
-    const img = document.createElement("img");
-    img.src = "https://www.freevisitorcounters.com/en/counter/render/1331320/t/2";
-    img.alt = "Visitor Counter";
-    img.className = "counterimg";
-    img.style.border = "0";
-
-    link.appendChild(img);
-    counterContainer.appendChild(link);
-  } else {
-    console.error("Visitor counter container not found!");
-  }
 
 
 
@@ -175,3 +157,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+
+
+
+// Visitor counter (loads after DOM is ready)
+const counterContainer = document.getElementById("visitorcounter");
+if (counterContainer) {
+  const link = document.createElement("a");
+  link.href = "https://www.freevisitorcounters.com/en/home/stats/id/1331320";
+  link.target = "_blank";
+
+  const img = document.createElement("img");
+  img.src = "https://www.freevisitorcounters.com/en/counter/render/1331320/t/2";
+  img.alt = "Visitor Counter";
+  img.className = "counterimg";
+  img.style.border = "0";
+
+  link.appendChild(img);
+  counterContainer.appendChild(link);
+} else {
+  console.error("Visitor counter container not found!");
+}
