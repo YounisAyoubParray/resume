@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // New: Robust scroll-highlight based on offsetTop
-  const sections = document.querySelectorAll("section[id]");
-  const links = document.querySelectorAll(".nav-links a");
+/*  const sections = document.querySelectorAll("section[id]");
+
   const navbarHeight = 80; // match your CSS navbar height
 
   const highlightOnScroll = () => {
@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", highlightOnScroll);
   highlightOnScroll(); // highlight on load if page is mid-scroll
-
+*/
   // Smooth Scroll & Click Handling for nav links
+  const links = document.querySelectorAll(".nav-links a");
   links.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();

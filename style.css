@@ -34,7 +34,7 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  padding: 1rem;
+  padding: .5rem;
   padding-top: 80px;
   min-height: 100vh;
   background: linear-gradient(to right, #e3f2fd, #bbdefb);
@@ -93,6 +93,7 @@ html {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
+  position: relative;
 }
 
 /* === NAV LINKS === */
@@ -150,11 +151,11 @@ h1 {
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
   text-transform: uppercase;
-  color: #007acc;
-  text-align: center;
+  color: #003366;
   margin: 1rem 0 2rem;
-  background: linear-gradient(to right, #004080, #0066cc, #0096d6); /* Deeper blues */
+  background: #004080; /* Deeper blues */
   -webkit-background-clip: text;
+  display: inline-block;
   -webkit-text-fill-color: transparent;
   letter-spacing: 1.5px;
   text-shadow: 0 6px 16px rgba(0, 102, 204, 0.4);
@@ -163,6 +164,19 @@ h1 {
   opacity: 0;
   animation: dropIn 0.8s ease-out forwards;
 }
+
+
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #007BFF; /* or your preferred underline color */
+  border-radius: 2px;
+}
+
 
 
 
@@ -217,7 +231,7 @@ section {
 
 /* === MOBILE MENU === */
 /* === MOBILE OVERRIDES === */
-@media (max-width: 768px) {
+@media (max-width: 920px) {
   /* 1) Show the hamburger */
   .menu-toggle {
     display: block;
@@ -255,7 +269,7 @@ section {
 
   /* 4) Scale down your big heading on phones */
   h1 {
-    font-size: 2rem;       /* smaller but still bold */
+    font-size: 1.5rem;       /* smaller but still bold */
     margin: 0.5rem 0 1.5rem;
   }
 }
@@ -307,7 +321,7 @@ section {
   color: #6c757d;
   font-size: 14px;
   /* Adjust depending on your padding */
-  padding-bottom: 100px;
+  padding-bottom: 15px;
   opacity: 0.8;
   font-style: italic;
   transition: all 0.3s ease;
