@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetSection = document.getElementById(targetId);
 
       // Update active class immediately
-      links.forEach((l) => l.classList.remove("active-link"));
-      this.classList.add("active-link");
+    //  links.forEach((l) => l.classList.remove("active-link"));
+    //  this.classList.add("active-link");
 
       // Smooth scroll
       targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
