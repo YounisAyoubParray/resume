@@ -188,16 +188,28 @@ section:hover {
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #000000;
-    padding: 1rem 0;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #000000;
+  padding-bottom: 1rem;  /* 👈 removed gap */
+  margin: 0; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links li {
+  padding-left: 20px; /* 👈 same left gap as desktop/logo */
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
 
   .nav-links.show {
     display: flex !important;
