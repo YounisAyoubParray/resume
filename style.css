@@ -101,6 +101,18 @@ section:hover {
   text-shadow: var(--glow);
   text-decoration: underline;
 }
+
+
+.easter-egg {
+  text-align: center;
+}
+
+
+
+
+
+
+
 /* Navbar wrapper */
 .navbar {
   position: sticky;
@@ -195,13 +207,13 @@ section:hover {
   left: 0;
   width: 100%;
   background: #000000;
-  padding-bottom: 1rem;  /* 👈 removed gap */
+  padding-bottom: 1rem;  
   margin: 0; 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .nav-links li {
-  padding-left: 20px; /* 👈 same left gap as desktop/logo */
+  padding-left: 20px; 
 }
 
 .nav-links a {
