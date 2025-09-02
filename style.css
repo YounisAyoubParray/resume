@@ -1,4 +1,4 @@
-/* === GENERAL (Miya Neon Style) === */
+
 :root {
   --primary-color: #0f172a;      /* Deep Navy */
   --secondary-color: #00e5ff;    /* Neon Cyan */
@@ -11,7 +11,7 @@
   --glow: 0 0 15px rgba(0,229,255,0.6);
 }
 
-/* === BODY === */
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -25,7 +25,7 @@ body {
 
 
 
-/* === HEADINGS === */
+
 h1 {
   font-size: 2.7rem;
   font-weight: 800;
@@ -44,11 +44,11 @@ h2 {
   text-shadow: 0 0 8px var(--secondary-color);
 }
 
-/* === SECTIONS === */
+
 section {
   margin: 2rem auto;
   padding: 2rem;
-  max-width: 1000px;
+  width: 70vw;
   background: var(--section-bg);
   border-radius: 12px;
   box-shadow: var(--glow);
@@ -122,7 +122,7 @@ section:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Inner container */
+
 .nav-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -132,11 +132,11 @@ section:hover {
   justify-content: space-between;
 }
 
-/* Logo / Name */
+
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #a020f0; /* Neon Purple base */
+  color: #a020f0; 
   text-shadow:
     0 0 5px #a020f0,
     0 0 10px #a020f0,
@@ -164,7 +164,7 @@ section:hover {
   animation: neonPulse 2s infinite alternate;
 }
 
-/* Links */
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -182,13 +182,19 @@ section:hover {
   color: #0d6efd;
 }
 
-/* Hamburger hidden by default (desktop) */
+
 .menu-toggle {
   display: none;
 }
 
-/* Mobile styles */
+
 @media (max-width: 920px) {
+
+section{
+  width: 80vw;
+}
+
+
   .menu-toggle {
     display: block;
     font-size: 1.8rem;
@@ -204,10 +210,10 @@ section:hover {
   flex-direction: column;
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
-  background: #000000;
-  padding-bottom: 1rem;  
+  right: 0;
+  background: #00000099;
+  padding-bottom: 1rem;
+  padding-right: 2rem;  
   margin: 0; 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
