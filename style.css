@@ -1,14 +1,16 @@
-
+/*#00e5ff
+#1d4ed8
+#0a0a0a
+#9ca3af*/
 :root {
-  --primary-color: #0f172a;      /* Deep Navy */
-  --secondary-color: #00e5ff;    /* Neon Cyan */
-  --accent-color: #1d4ed8;       /* Electric Blue */
-  --light-bg: #0a0a0a;           /* Dark Background */
-  --section-bg: #111827;         /* Section Darker BG */
-  --text-color: #e5e7eb;         /* Light Gray */
-  --muted-text: #9ca3af;         /* Muted */
-  --shadow: rgba(0, 229, 255, 0.25);
-  --glow: 0 0 15px rgba(0,229,255,0.6);
+  --navbar:black;
+  --primary-color: #213555;      
+  --secondary-color: #bebebe;    
+  --accent-color: #ba6427;                
+  --section-bg: #F5EFE7;         
+  --text-color: #e9e8e8;         
+  --shadow: rgba(9, 39, 43, 0.25);
+  --glow: 0 0 15px rgba(0, 229, 255, 0.444);
 }
 
 
@@ -16,14 +18,29 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background: var(--light-bg);
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
+.gradient-background {
+  background: linear-gradient(300deg, #000000,  #0f0f0f,#131313);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
+}
 
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
 
 h1 {
@@ -36,7 +53,7 @@ h1 {
   text-shadow: var(--glow);
 }
 h2 {
-  color: var(--secondary-color);
+  color: var(--text-color);
   font-weight: 700;
   margin-bottom: 1rem;
   border-left: 5px solid var(--accent-color);
@@ -45,57 +62,65 @@ h2 {
 }
 
 
+
 section {
   margin: 2rem auto;
   padding: 2rem;
   width: 70vw;
-  background: var(--section-bg);
+   text-align: justify;
+  color: var(--text-color);
   border-radius: 12px;
-  box-shadow: var(--glow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 section:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 25px rgba(0,229,255,0.8);
 }
+
+
+
+
+
+
+
+
+
+
+
 .highlight {
-  color: var(--secondary-color);
+  color: var(--accent-color);
   font-weight: bold;
-  text-shadow: var(--glow);
+ 
 }
 
 /* === CONTACT === */
 .contact {
-  background: var(--primary-color);
   border-left: 5px solid var(--accent-color);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: var(--glow);
+ 
 }
 .contact a {
-  color: var(--secondary-color);
   font-weight: 600;
   text-decoration: none;
 }
 .contact a:hover {
-  color: #fff;
-  text-shadow: var(--glow);
+  color: #ffffff;
+  
   text-decoration: underline;
 }
 
 /* === FOOTER === */
 .site-footer {
-  background: var(--primary-color);
-  color: #fff;
   padding: 1.5rem;
+  padding-top: 0%;
   text-align: center;
   font-size: 0.95rem;
-  box-shadow: 0 -3px 12px var(--shadow);
 }
 .site-footer a {
-  color: var(--secondary-color);
   font-weight: 600;
   text-decoration: none;
+  color: #ba6427;
 }
 .site-footer a:hover {
   text-shadow: var(--glow);
@@ -107,8 +132,40 @@ section:hover {
   text-align: center;
 }
 
+.text-gray-800{
+  color: var(--accent-color);
+}
+.text-gray-800:hover{
+  color: var(--text-color);
+}
 
 
+.grida{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width:1000px;
+  align-items: center;  
+}
+
+.thetext{
+  padding: 10px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  min-height: 100vh;      
+}
+
+.thepic {
+   padding: 10px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+}
 
 
 
@@ -116,10 +173,12 @@ section:hover {
 /* Navbar wrapper */
 .navbar {
   position: sticky;
+  background: var(--navbar);
   top: 0;
   z-index: 999;
-  background: #000000;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  
+
 }
 
 
@@ -129,43 +188,16 @@ section:hover {
   padding: 14px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #a020f0; 
-  text-shadow:
-    0 0 5px #a020f0,
-    0 0 10px #a020f0,
-    0 0 20px #a020f0,
-    0 0 40px #a020f0;
-}
-@keyframes neonPulse {
-  0%, 100% {
-    text-shadow:
-      0 0 5px #a020f0,
-      0 0 10px #a020f0,
-      0 0 20px #a020f0,
-      0 0 40px #a020f0;
-  }
-  50% {
-    text-shadow:
-      0 0 10px #a020f0,
-      0 0 20px #a020f0,
-      0 0 40px #a020f0,
-      0 0 80px #a020f0;
-  }
-}
 
-.logo {
-  animation: neonPulse 2s infinite alternate;
-}
+
 
 
 .nav-links {
+  padding: 0%;
   list-style: none;
   display: flex;
   gap: 28px;
@@ -173,13 +205,13 @@ section:hover {
 
 .nav-links a {
   text-decoration: none;
-  color: rgb(197, 191, 191);
+  color: var(--text-color);
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: #0d6efd;
+  color:  var(--primary-color);
 }
 
 
@@ -188,22 +220,104 @@ section:hover {
 }
 
 
+.logolinkflex{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+}
+
+
+
+.gridtime{
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 2fr 10fr;
+  gap: 20px;
+}
+
+
+
+
+.flex-table {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+.cell {
+  padding: 8px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;       /* aligns img + text together */
+  gap: 8px; 
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 920px) {
 
+  .grida {
+    grid-template-columns: 1fr; 
+  }
+
+  .thepic {
+    order: -1; 
+  }
 section{
-  width: 80vw;
+  display: block;
+   max-width: 100%;
+}
+
+section:hover {
+  transform:  none;
+  box-shadow: none;
 }
 
 
   .menu-toggle {
     display: block;
     font-size: 1.8rem;
-    color:  rgb(197, 191, 191);
+    color:  rgb(255, 255, 255);
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1001;
   }
+
+  .nav-container{
+    justify-content: flex-end;
+  }
+
 
   .nav-links {
   display: none;
@@ -211,7 +325,7 @@ section{
   position: absolute;
   top: 100%;
   right: 0;
-  background: #00000099;
+  background: var(--navbar);
   padding-bottom: 1rem;
   padding-right: 2rem;  
   margin: 0; 
