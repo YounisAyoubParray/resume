@@ -195,6 +195,7 @@ section:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateZ(0);
 }
 
 
@@ -241,6 +242,7 @@ section:hover {
   grid-template-rows: repeat(3, auto);
   grid-template-columns: 2fr 10fr;
   gap: 2rem;
+  transform: translateZ(0);
 }
 
 
@@ -321,7 +323,9 @@ section:hover {
     z-index: 1001;
   }
 
-
+.nav-container{
+  justify-content: flex-start;
+}
 
   .nav-links {
   display: none;
