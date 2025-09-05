@@ -240,7 +240,7 @@ section:hover {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: 2fr 10fr;
-  gap: 20px;
+  gap: 2rem;
 }
 
 
@@ -258,7 +258,7 @@ section:hover {
   padding: 8px;
   text-align: center;
   display: inline-flex;
-  align-items: center;       /* aligns img + text together */
+  align-items: center;       
   gap: 8px; 
   font-size: 18px;
 }
