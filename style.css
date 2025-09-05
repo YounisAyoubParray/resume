@@ -149,6 +149,7 @@ section:hover {
 
 .thetext{
   padding: 10px;
+  padding-left: 20px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
   text-align: center;
 }
@@ -167,10 +168,15 @@ section:hover {
   align-items: center;     
 }
 
+.thepic > img{
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+}
 
 
 
-/* Navbar wrapper */
+
 .navbar {
   position: sticky;
   background: var(--navbar);
@@ -290,9 +296,10 @@ section:hover {
     grid-template-columns: 1fr; 
   }
 
-  .thepic {
-    order: -1; 
+  .thepic{
+       order: -1;
   }
+
 section{
   display: block;
    max-width: 100%;
@@ -315,7 +322,7 @@ section:hover {
   }
 
   .nav-container{
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
 
@@ -324,7 +331,7 @@ section:hover {
   flex-direction: column;
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 0;
   background: var(--navbar);
   padding-bottom: 1rem;
   padding-right: 2rem;  
@@ -345,5 +352,13 @@ section:hover {
 
   .nav-links.show {
     display: flex !important;
+  }
+}
+
+@media(max-width:600px){
+  .thepic > img {
+    height: 300px;
+    margin-top: 50px;
+    width: 300px;
   }
 }
