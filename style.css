@@ -258,7 +258,7 @@ section:hover {
   padding: 8px;
   text-align: center;
   display: inline-flex;
-  align-items: center;       
+  align-items: center;       /* aligns img + text together */
   gap: 8px; 
   font-size: 18px;
 }
@@ -321,9 +321,6 @@ section:hover {
     z-index: 1001;
   }
 
-  .nav-container{
-    justify-content: flex-start;
-  }
 
 
   .nav-links {
