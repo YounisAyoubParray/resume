@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed.");
 
-  // Elements for mobile menu functionality
+  
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const navContainer = document.querySelector(".nav-container");
@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!navLinks) console.error("Navigation links container not found!");
   if (!navContainer) console.error("Navigation container element not found!");
 
-  // Mobile Menu: Click event for hamburger toggle
   if (menuToggle && navLinks && navContainer) {
     menuToggle.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Close menu when clicking outside
+  
   document.addEventListener("click", (e) => {
     if (navContainer && !navContainer.contains(e.target)) {
       navLinks.classList.remove("show");
@@ -38,18 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
       
-      // Close mobile menu
       navLinks.classList.remove("show");
       navContainer.classList.remove("menu-open");
     });
   });
 
-window.addEventListener("load", () => {
-    // Force Chrome to recalc layout in "Desktop site" mode
-    setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
-    }, 50);
-  });
+
 
   const tips = [
       "🧠 Tip: Keep scrolling — great things come at the end.",
