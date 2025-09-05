@@ -44,7 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
+window.addEventListener("load", () => {
+    // Force Chrome to recalc layout in "Desktop site" mode
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 50);
+  });
 
   const tips = [
       "🧠 Tip: Keep scrolling — great things come at the end.",

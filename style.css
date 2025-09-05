@@ -195,7 +195,6 @@ section:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 0;
 }
 
 
@@ -242,7 +241,6 @@ section:hover {
   grid-template-rows: repeat(3, auto);
   grid-template-columns: 2fr 10fr;
   gap: 2rem;
-  min-width: 0;
 }
 
 
