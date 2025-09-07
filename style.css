@@ -25,9 +25,9 @@ body {
 }
 
 .gradient-background {
-  background: linear-gradient(300deg, #000000,  #0f0f0f,#131313);
+  background: linear-gradient(300deg, #404040, #292929, #000000 );
   background-size: 180% 180%;
-  animation: gradient-animation 18s ease infinite;
+  animation: gradient-animation 10s ease infinite;
 }
 
 @keyframes gradient-animation {
@@ -93,11 +93,12 @@ section:hover {
  
 }
 
-/* === CONTACT === */
+
 .contact {
   border-left: 5px solid var(--accent-color);
   padding: 1.5rem;
   border-radius: 12px;
+  text-align: left;
  
 }
 .contact a {
@@ -110,7 +111,8 @@ section:hover {
   text-decoration: underline;
 }
 
-/* === FOOTER === */
+
+
 .site-footer {
   padding: 1.5rem;
   padding-top: 0%;
@@ -148,10 +150,18 @@ section:hover {
 }
 
 .thetext{
+  font-family: 'Courier New', Courier, monospace; 
+  font-weight: bold; 
+  font-size: 2.5rem;
   padding: 10px;
   padding-left: 20px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
   text-align: center;
+}
+
+.thetext  p{
+  font-weight: normal;
+  font-size: 1rem;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
 }
 
 .wrapper {
@@ -258,8 +268,7 @@ section:hover {
   padding: 8px;
   text-align: center;
   display: inline-flex;
-  align-items: center;       /* aligns img + text together */
-  gap: 8px; 
+  align-items: center;       
   font-size: 18px;
 }
 
@@ -360,4 +369,11 @@ section:hover {
     margin-top: 50px;
     width: 300px;
   }
+
+  .thetext{
+    font-size: 2rem;
+  }
+
+
+
 }
