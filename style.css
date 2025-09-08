@@ -150,7 +150,7 @@ section:hover {
 }
 
 .thetext{
-  font-family: 'Courier New', Courier, monospace; 
+  font-family: 'Courier New', Courier, monospace;
   font-weight: bold; 
   font-size: 2.5rem;
   padding: 10px;
@@ -189,11 +189,11 @@ section:hover {
 
 .navbar {
   position: sticky;
-  background: var(--navbar);
   top: 0;
   z-index: 999;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  
+  backdrop-filter: blur(10px); /* apply blur */
+  -webkit-backdrop-filter: blur(10px);
 
 }
 
@@ -300,7 +300,11 @@ section:hover {
 
 
 @media (max-width: 920px) {
-
+  .navbar{
+  background: var(--navbar);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  }
   .grida {
     grid-template-columns: 1fr; 
   }
